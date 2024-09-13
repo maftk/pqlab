@@ -1,0 +1,24 @@
+services:
+  db:
+    image: postgres
+    container_name: sql
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: shiny-lab
+      POSTGRES_DB: postgres
+    volumes:
+      - ./sql/init.sql:/docker-entrypoint-initdb.d/init.sql
+      - ./sql:/sql
+    ports:
+      - "5432:5432"
+  sqy:
+    build: .
+    container_name: sqy
+    depends_on:
+      - db
+    environment:
+      DATABASE_URL: postgresql://postgres:shiny-lab@db:5432/postgres
+    volumes:
+      - ./sqy:/sqy
+    tty: true
+
