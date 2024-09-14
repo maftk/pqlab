@@ -12,34 +12,15 @@ jobs:
   build:
     runs-on: ubuntu-latest
     
-    services:
-      psql:
-        image: postgres:latest
-        env:
-          POSTGRES_USER: postgres
-          POSTGRES_PASSWORD: shiny-lab
-          POSTGRES_DB: postgres
-        ports:
-          - 5432:5432
-        volumes:
-          - ./sql:/sql
-            # aaa
-    
-    env:
-      DATABASE_URL: ${{ secrets.DATABASE_URL }}
     steps:
-      - name: Checkout code
-        uses: actions/checkout@v2
+    - name: Checkout code
+      uses: actions/checkout@v3
 
-      - name: Set up Python
-        uses: actions/setup-python@v4
-        with:
-          python-version: '3.9'
+    - name: Set up Docker
+      uses: docker/setup-buildx-action@v2
 
-      - name: Install dependencies
-        run: |
-          pip install SQLAlchemy pandas seaborn matplotlib streamlit psycopg2-binary
+    - name: Build and run containers
+      run: docker-compose up -d
 
-      - name: Run tests
-        run: |
-          python py/set_data.py
+    - name: Verify containers are running
+      run: docker-compose ps
