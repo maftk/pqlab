@@ -19,7 +19,6 @@ Pythonコンテナの操作 Python環境を操作するには、次のコマン�
 docker exec -it py bash
 ```
 
-読み込んでいて気付いたこと\
 sqlにデータを入れる
 ```bash
 python set_data.py
