@@ -38,7 +38,7 @@ jobs:
 
       - name: Install dependencies
         run: |
-          pip install SQLAlchemy pandas seaborn matplotlib streamlit
+          pip install SQLAlchemy pandas seaborn matplotlib streamlit psycopg2-binary
 
       - name: Run tests
         run: |
