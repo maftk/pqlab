@@ -1,0 +1,47 @@
+name: Docker Compose Setup
+
+on:
+  push:
+    branches:
+      - master  # or any branch you want to trigger the workflow
+  pull_request:
+    branches:
+      - master  # or any branch you want to trigger the workflow
+
+jobs:
+  build-and-test:
+    runs-on: ubuntu-latest
+    
+    services:
+      psql:
+        image: postgres:latest
+        env:
+          POSTGRES_USER: postgres
+          POSTGRES_PASSWORD: shiny-lab
+          POSTGRES_DB: postgres
+        ports:
+          - 5432:5432
+        volumes:
+          - ./sql:/sql
+    
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+        
+      - name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@v2
+
+      - name: Build and start containers
+        run: |
+          docker-compose -f docker-compose.yml up --build -d
+      - name: Run set_data.py script
+          run: |
+            docker-compose -f docker-compose.yml run --rm py python set_data.py
+
+      - name: Run tests
+        run: |
+          docker-compose -f docker-compose.yml run --rm py python -m unittest discover
+
+      - name: Stop and remove containers
+        run: |
+          docker-compose -f docker-compose.yml down

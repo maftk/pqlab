@@ -73,18 +73,18 @@ pref_names_list = fetch_pref_names()
 default_pref_names = ('東京都', '沖縄県', '山口県')
 
 # レイアウトの設定
-chart_col, control_col = st.columns([3, 1])
+# chart_col, control_col = st.columns([3, 1])
 
 # コントロールパネル
-with control_col:
-    with st.expander('Edit chart', expanded=True):
-        start_date = st.date_input('Start Date', value=pd.to_datetime(default_start_date))
-        end_date = st.date_input('End Date', value=pd.to_datetime(default_end_date))
-        pref_names = st.multiselect('Prefectures', options=pref_names_list, default=list(default_pref_names))
+# with control_col:
+with st.expander('Edit chart', expanded=True):
+    start_date = st.date_input('Start Date', value=pd.to_datetime(default_start_date))
+    end_date = st.date_input('End Date', value=pd.to_datetime(default_end_date))
+    pref_names = st.multiselect('Prefectures', options=pref_names_list, default=list(default_pref_names))
 
 # データの読み込み
 df = load_data(pref_names, start_date, end_date)
 
 # チャートの描画
-with chart_col:
-    plot_chart(df)
+# with chart_col:
+plot_chart(df)
