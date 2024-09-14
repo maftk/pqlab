@@ -38,3 +38,4 @@ INSERT INTO pref_code VALUES('01','kC¹','Hokkaido');
 INSERT INTO pref_code VALUES('01','北海道','Hokkaido');
 
 ```
+現在ここまで
