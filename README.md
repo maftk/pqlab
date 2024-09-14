@@ -2,8 +2,8 @@
 リポジトリをクローン
 
 ```bash
-git clone <リポジトリURL>
-cd <リポジトリディレクトリ>
+git clone https://github.com/maftk/pqlab.git
+cd pqlab
 ```
 Dockerイメージのビルド 以下のコマンドを使用して、Dockerイメージをビルドし、サービスを起動します。
 ```bash
