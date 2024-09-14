@@ -34,9 +34,6 @@ jobs:
       - name: Build and start containers
         run: |
           docker-compose -f docker-compose.yml up --build -d
-      - name: Run set_data.py script
-          run: |
-            docker-compose -f docker-compose.yml run --rm py python set_data.py
 
       - name: Run tests
         run: |
