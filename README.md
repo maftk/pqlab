@@ -26,17 +26,15 @@ docker exec -it py bash
 を作った。
 ```sql
 --covit19_sum.sql
-CREATE TABLE covid19_sum (--covit19_sum > covid19_sum
+--修正前
+CREATE TABLE covit19_sum (
+--修正後
+CREATE TABLE covid19_sum (
 
 --pref_code.sql
---pref_name列に入る漢字の文字化けを修正
 --修正前
 INSERT INTO pref_code VALUES('01','kC¹','Hokkaido');
 --修正後
 INSERT INTO pref_code VALUES('01','北海道','Hokkaido');
 
-
---make_covit19_2.sql
---covit19.sum.sqlにより作られたテーブル名が間違ってた
-covid19_sum AS c --最初に見つけたエラー部分
 ```
