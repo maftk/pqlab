@@ -21,7 +21,7 @@ docker exec -it py bash
 
 ```
 
-読み込んでいて気付いたこと
+読み込んでいて気付いたこと\
 `covit19_sum.sql`,`pref_code.sql`,`make_covit19_2.sql`から`init.sql`
 を作った。
 ```sql
