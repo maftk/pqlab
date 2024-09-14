@@ -19,9 +19,7 @@ Pythonコンテナの操作 Python環境を操作するには、次のコマン�
 docker exec -it py bash
 ```
 
-<<<<<<< HEAD
 読み込んでいて気付いたこと\
-=======
 sqlにデータを入れる
 ```bash
 python set_data.py
@@ -34,7 +32,6 @@ streamlit run lit.py
 `localhost:8501`
 
 読み込んでいて気付いたこと
->>>>>>> 424c391 (end)
 `covit19_sum.sql`,`pref_code.sql`,`make_covit19_2.sql`から`init.sql`
 を作った。
 ```sql
@@ -50,13 +47,8 @@ INSERT INTO pref_code VALUES('01','�k�C�¹','Hokkaido');
 --修正後
 INSERT INTO pref_code VALUES('01','北海道','Hokkaido');
 
-<<<<<<< HEAD
-```
-現在ここまで
-=======
 --make_covit19_2.sql
 --追加
 SELECT c.reporting_date,p.pref_code,c.Hokkaido FROM covid19_sum AS c CROSS JOIN pref_code AS p WHERE p.pref_code='01' UNION
 ```
-課題終わり
->>>>>>> 424c391 (end)
+終わり
