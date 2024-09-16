@@ -4,7 +4,7 @@ from db import engine
 import pandas as pd
 import matplotlib.pyplot as plt
 import seaborn as sns
-
+import plotly.express as px
 st.set_page_config(layout='wide')
 
 def fetch_pref_names():
@@ -65,6 +65,18 @@ def plot_chart(df):
     # Streamlitでの描画
     st.pyplot(plt)
 
+def plot_plotly_chart(df):
+    fig = px.line(df, x='week', y='total_infected', color='eng_pref_name', 
+                  labels={'week': 'Week', 'total_infected': 'Total Infected', 'eng_pref_name': 'Prefecture'},
+                  title='COVID-19 Weekly Infected Cases (Plotly)',
+                  # animation_frame='week',
+                  animation_group='eng_pref_name'
+                  )
+    
+    fig.update_layout(xaxis_title='Week', yaxis_title='Total Infected', title='COVID-19 Weekly Infected Cases')
+    
+    st.plotly_chart(fig)
+
 # 初期パラメータ
 default_start_date = '2020-01-16'
 default_end_date = '2023-05-08'
@@ -87,4 +99,10 @@ df = load_data(pref_names, start_date, end_date)
 
 # チャートの描画
 # with chart_col:
-plot_chart(df)
+chart_type = st.radio("Select Chart Type", ('Seaborn', 'Plotly'))
+
+# チャートの描画
+if chart_type == 'Seaborn':
+    plot_chart(df)
+elif chart_type == 'Plotly':
+    plot_plotly_chart(df)
