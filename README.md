@@ -28,9 +28,9 @@ python set_data.py
 streamlit run lit.py
 ```
 ブラウザでアクセス\
-`localhost:8501`
+`localhost:8501`\
 公開してみた\
-`https://pqlab.onrender.com`
+`https://pqlab.onrender.com`\
 読み込んでいて気付いたこと
 `covit19_sum.sql`,`pref_code.sql`,`make_covit19_2.sql`から`init.sql`
 を作った。
