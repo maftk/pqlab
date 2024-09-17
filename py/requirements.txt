@@ -1,0 +1,7 @@
+pandas
+seaborn
+plotly
+streamlit
+SQLAlchemy
+psycopg2-binary
+matplotlib

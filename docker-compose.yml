@@ -1,15 +1,11 @@
 services:
   psql:
-    build:
-      context: .
-      target: db
+    image: postgres
     container_name: db
     environment:
       POSTGRES_USER: postgres
       POSTGRES_PASSWORD: shiny-lab
       POSTGRES_DB: postgres
-    volumes:
-      - ./sql:/sql
     ports:
       - "5432:5432"
   python:

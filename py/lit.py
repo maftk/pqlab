@@ -1,3 +1,4 @@
+import set_data
 import streamlit as st
 from sqlalchemy import text
 from db import engine
@@ -5,6 +6,7 @@ import pandas as pd
 import matplotlib.pyplot as plt
 import seaborn as sns
 import plotly.express as px
+
 st.set_page_config(layout='wide')
 
 def fetch_pref_names():
@@ -99,7 +101,7 @@ df = load_data(pref_names, start_date, end_date)
 
 # チャートの描画
 # with chart_col:
-chart_type = st.radio("Select Chart Type", ('Seaborn', 'Plotly'))
+chart_type = st.radio("Select Chart Type", ('Plotly', 'Seaborn'))
 
 # チャートの描画
 if chart_type == 'Seaborn':
