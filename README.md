@@ -18,15 +18,6 @@ Pythonコンテナの操作 Python環境を操作するには、次のコマン�
 ```bash
 docker exec -it py bash
 ```
-
-sqlにデータを入れる
-```bash
-python set_data.py
-```
-確認プログラムの起動
-```bash
-streamlit run lit.py
-```
 ブラウザでアクセス\
 `localhost:8501`\
 <br/>
