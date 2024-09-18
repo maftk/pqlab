@@ -21,5 +21,6 @@ services:
       - ./py:/py
     ports:
       - "8501:8501"
+    command: streamlit run lit.py
     tty: true
 

@@ -24,9 +24,10 @@ with st.expander('Edit chart', expanded=True):
     start_date = st.date_input('Start Date', value=pd.to_datetime(default_start_date))
     end_date = st.date_input('End Date', value=pd.to_datetime(default_end_date))
     pref_names = st.multiselect('Prefectures', options=pref_names_list, default=list(default_pref_names))
+    interval = st.selectbox('Select interval', ['Daily', 'Weekly'])
 
 # データの読み込み
-df = fd.load_data(pref_names, start_date, end_date)
+df = fd.load_data(pref_names, start_date, end_date, interval)
 
 # チャートの描画
 # with chart_col:
@@ -34,6 +35,6 @@ chart_type = st.radio("Select Chart Type", ('Plotly', 'Seaborn'))
 
 # チャートの描画
 if chart_type == 'Seaborn':
-    pt.plot_chart(df)
+    pt.plot_chart(df,interval)
 elif chart_type == 'Plotly':
-    pt.plot_plotly_chart(df)
+    pt.plot_plotly_chart(df,interval)
