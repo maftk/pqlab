@@ -1,6 +1,6 @@
 from sqlalchemy import text
 
-first_sql = text('''
+init_sql = text('''
 CREATE TABLE covid19_sum (--covit19_sum > covid19_sum
   reporting_date DATE
   , nationwide INTEGER
@@ -52,6 +52,8 @@ CREATE TABLE covid19_sum (--covit19_sum > covid19_sum
   , kagoshima INTEGER
   , okinawa INTEGER
 );
+
+copy covid19_sum from '/data/covid19_sum.csv' with csv;
 
 --pref_code.sql
 CREATE TABLE pref_code
@@ -124,13 +126,8 @@ WHERE
 	p.pref_code='01'
 ;
 
-CREATE UNIQUE INDEX ui_covid_19 ON covid_19(reporting_date,pref_code);
 
-''')
-
-second_sql = text('''
 INSERT INTO covid_19
-SELECT c.reporting_date,p.pref_code,c.Hokkaido FROM covid19_sum AS c CROSS JOIN pref_code AS p WHERE p.pref_code='01' UNION
 SELECT c.reporting_date,p.pref_code,c.Aomori FROM covid19_sum AS c CROSS JOIN pref_code AS p WHERE p.pref_code='02' UNION
 SELECT c.reporting_date,p.pref_code,c.Iwate FROM covid19_sum AS c CROSS JOIN pref_code AS p WHERE p.pref_code='03' UNION
 SELECT c.reporting_date,p.pref_code,c.Miyagi FROM covid19_sum AS c CROSS JOIN pref_code AS p WHERE p.pref_code='04' UNION
@@ -178,4 +175,5 @@ SELECT c.reporting_date,p.pref_code,c.Miyazaki FROM covid19_sum AS c CROSS JOIN 
 SELECT c.reporting_date,p.pref_code,c.Kagoshima FROM covid19_sum AS c CROSS JOIN pref_code AS p WHERE p.pref_code='46' UNION
 SELECT c.reporting_date,p.pref_code,c.Okinawa FROM covid19_sum AS c CROSS JOIN pref_code AS p WHERE p.pref_code='47'
 ;
+CREATE UNIQUE INDEX ui_covid_19 ON covid_19(reporting_date,pref_code);
 ''')

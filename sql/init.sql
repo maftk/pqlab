@@ -51,6 +51,7 @@ CREATE TABLE covid19_sum (--covit19_sum > covid19_sum
   , okinawa INTEGER
 );
 
+copy covid19_sum from '/data/covid19_sum.csv' with csv;
 --pref_code.sql
 CREATE TABLE pref_code
 (
