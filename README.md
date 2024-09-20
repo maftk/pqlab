@@ -39,9 +39,5 @@ CREATE TABLE covid19_sum (
 INSERT INTO pref_code VALUES('01','�k�C�¹','Hokkaido');
 --修正後
 INSERT INTO pref_code VALUES('01','北海道','Hokkaido');
-
---make_covit19_2.sql
---追加
-SELECT c.reporting_date,p.pref_code,c.Hokkaido FROM covid19_sum AS c CROSS JOIN pref_code AS p WHERE p.pref_code='01' UNION
 ```
 終わり
