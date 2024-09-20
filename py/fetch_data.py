@@ -1,7 +1,9 @@
 from sqlalchemy import text
 from db import engine
 import pandas as pd
+import streamlit as st
 
+@st.cache_data
 def fetch_pref_names():
     """ データベースから都道府県のリストを取得 """
     sql = text('''
@@ -13,6 +15,7 @@ def fetch_pref_names():
     df = pd.read_sql(sql, engine)
     return df['pref_name'].tolist()
 
+@st.cache_data
 def load_data(pref_names, start_date, end_date, interval):
     pref_names_tuple = tuple(pref_names)
     # SQLクエリの定義
