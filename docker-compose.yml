@@ -6,11 +6,10 @@ services:
       POSTGRES_USER: postgres
       POSTGRES_PASSWORD: shiny-lab
       POSTGRES_DB: postgres
+    volumes:
+      - ./data:/data
     ports:
       - "5432:5432"
-    volumes:
-      # - ./sql/init.sql:/docker-entrypoint-initdb.d/init.sql
-      - ./data:/data
   python:
     build:
       context: .

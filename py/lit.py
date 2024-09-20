@@ -1,4 +1,5 @@
 import set_data
+print("Data End")
 from sqlalchemy import text
 from db import engine
 import pandas as pd
